@@ -1,28 +1,55 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-	<title>小v的sleep掉电bug根本原因分析和解决 | A Ordinary Boy, A Marvelous Toy</title>
-	<meta charset="utf-8" />
-    <meta name="author" content="cosmoslx">
-	<link rel="stylesheet" href="http://blog.cosmoslx.me/theme/css/franticworld.css" type="text/css" />
-	<link href="http://blog.cosmoslx.me/theme/css/pygments.css" rel="stylesheet">
-</head>
-<body background="http://blog.cosmoslx.me/theme/img/pattern.png">
-		<div class="nav-banner">
-		<a href="http://blog.cosmoslx.me">A Ordinary Boy, A Marvelous Toy</a>
-		</div>
-		
-		<div class="content">
+    <head>
+        <title>A Ordinary Boy, A Marvelous Toy | 小v的sleep掉电bug根本原因分析和解决</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <link rel="stylesheet" type="text/css" href="http://blog.cosmoslx.me/theme/css/base.css" />
+        <meta name="author" value="cosmoslx" />
+        <meta name="description" value="hi~ 各位机油 , 龙年快乐啊 , 从 2011 年的圣诞的那天开始我拥抱 veer, 走上 webos 之路 , 各位煮机网的机油都给我提供了大量的帮助 , 现在是我小小贡献的时候了 . 废话不多说 , 进入正题 ." />
+        <meta name="keywords" value="" />
+    </head>
+    <body>
+        <header class="site highlight">
+                <h1 class="stamp lrot bs">A ordinary boy</h1>
+                <h1 class="stamp rrot rfloat">build a marvelous toy</h1>
+        </header>
+        <div class="site clearfix">
+<nav class="lfloat">
+    <ul class="links">
+    <li>
+        <a class="stamp" href="http://blog.cosmoslx.me/category/life.html">Life</a>
+    </li>
+    <li class="active">
+        <a  href="http://blog.cosmoslx.me/category/play.html">Play</a>
+    </li>
+    <li>
+        <a class="stamp" href="http://blog.cosmoslx.me/category/tech.html">Tech</a>
+    </li>
+    </ul>
+    <ul class="social rfloat">
+        <li><a title="about me" href="http://about.me/cosmoslx"></a></li>
+        <li><a title="github" href="http://github.com/cosmoslx"></a></li>
+        <li><a href="http://blog.cosmoslx.me/feeds/atom.xml" class="feed" type="atom+xml"></a></li>
+    </ul>
+</nav>            <section class="content">
+                <h1 class="stamp">小v的sleep掉电bug根本原因分析和解决</h1>
+                <div class="body">
+<article>
+    <footer>
+        <ul class="socialbtn">
+            <li></li>
+            <li></li>
+        </ul>
+        Sat 04 February 2012
+        <address>
+            <a href="http://blog.cosmoslx.me/author/cosmoslx.html">cosmoslx</a>
+        </address>
 
-<div class="metabox">
-	<p class="metaday">035</p>
-	<p class="metayear">2012</p>
-	<p class="metacategory">Play</p>
-</div>
-<div class="arcticlecontentbox">
-	<div class="articlecontent">
-		<a class="articletitle" href="/veer-sleep-bug.html " >小v的sleep掉电bug根本原因分析和解决</a>
-		<p>hi~ 各位机油 , 龙年快乐啊 , 从 2011 年的圣诞的那天开始我拥抱 veer, 走上 webos 之路 , 各位煮机网的机油都给我提供了大量的帮助 , 现在是我小小贡献的时候了 . 废话不多说 , 进入正题 .</p>
+    </footer>
+
+    <div class="content">
+        <p>hi~ 各位机油 , 龙年快乐啊 , 从 2011 年的圣诞的那天开始我拥抱 veer, 走上 webos 之路 , 各位煮机网的机油都给我提供了大量的帮助 , 现在是我小小贡献的时候了 . 废话不多说 , 进入正题 .</p>
 
 
 <h1>sleep 掉电 bug</h1>
@@ -86,41 +113,54 @@
 <li><a href="http://bbs.zoopda.com/forum.php?mod=viewthread&amp;tid=85588&amp;fromuid=230125"> 待机突然掉电的真正原因 ，11 月 21 日针对 veer 更新 ！</a></li>
 <li><a href="http://bbs.zoopda.com/forum.php?mod=viewthread&amp;tid=94264&amp;fromuid=230125"> 为甚么我的 <span class="caps">VEER</span> 装上动感地带的卡后老是出现 “<span class="caps">SIM</span> 卡服务 ” 的字样 </a></li>
 </ol>
-	</div>
-	
-	       
-</div>
+    </div><!-- /.entry-content -->
 
-		</div>
-		
-		<div class="sidebar">
-<div class="sidebarcategory">
-<h4>Categories</h4>
-	<li><a href="http://blog.cosmoslx.me/category/life.html">Life</a></li>
-	<li><a href="http://blog.cosmoslx.me/category/play.html">Play</a></li>
-	<li><a href="http://blog.cosmoslx.me/category/tech.html">Tech</a></li>
-</div>
+    <div class="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_identifier = "veer-sleep-bug.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://cosmoslx-blog.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+    </div>
 
-<div class="sidebarpages">
-</div>
-
-<div class="sidebarblogroll">
-<h4>Blogroll</h4>
-    <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
-</div>
-
-<div class="sidebarsocial">
-<h4>Social</h4>
-    <li><a href="http://about.me/cosmoslx">about me</a></li>
-    <li><a href="http://github.com/cosmoslx">github</a></li>
-</div>		</div>
-		
-		<footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>,
-				Theme by <a href="http://frantic1048.com/">Frantic1048</a>.
-                </address><!-- /#about -->
-        </footer><!-- /#contentinfo -->
-</body>
+</article>
+                </div>
+            </section>
+ <footer class="site clearfix bs">
+    <section class="lfloat">
+        <ul>
+            <lh>categories</lh>
+            <li><a href="http://blog.cosmoslx.me/category/life.html">Life</a></li>
+            <li><a href="http://blog.cosmoslx.me/category/play.html">Play</a></li>
+            <li><a href="http://blog.cosmoslx.me/category/tech.html">Tech</a></li>
+        </ul>
+    </section>
+    <section class="lfloat">
+        <ul>
+            <lh>pages</lh>
+        </ul>
+    </section>
+    <section class="rfloat">
+    <small>
+        <p>site generated by <a href="https://github.com/getpelican/pelican">pelican</a></p>
+        <p>theme by <a href="https://github.com/demianbrecht">demian brecht</a></p>
+    </small>
+    </section>
+</footer>        </div>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-58180786-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    </body>
 </html>
