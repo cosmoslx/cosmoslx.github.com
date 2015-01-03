@@ -22,25 +22,25 @@
 <div class="arcticlecontentbox">
 	<div class="articlecontent">
 		<a class="articletitle" href="/pelican-blog.html " >把你的blog从octopress迁移到pelican吧(1)</a>
-		<p>在很久很久之前有一个用<a href="http://octopress.org">octopress</a>在github pages上搭建的blog, octopress提供使用markdown的方式来写blog，非常的方便，而且默认提供的功能和模板也足够的强大。
-然而唯一的缺陷是是使用Ruby及Rake来配置和部署，简单看了一下，感觉比较不易读, 要自定义以及扩展起来比较麻烦，而且产生blog的目录结构也复杂不够直观。
-如果有一个同样支持markdown同时可以提供相同功能，而更易用的Python版本octopress那多好啊。
-于是一小心发现到基于Python的<a href="http://blog.getpelican.com/">pelican</a>这个项目就马上感觉就是这个了，于是就有了本次的迁移。</p>
-<!-- more -->
+		<p> 在很久很久之前有一个用 <a href="http://octopress.org">octopress</a> 在 github pages 上搭建的 blog, octopress 提供使用 markdown 的方式来写 blog， 非常的方便 ， 而且默认提供的功能和模板也足够的强大 。
+ 然而唯一的缺陷是是使用 Ruby 及 Rake 来配置和部署 ， 简单看了一下 ， 感觉比较不易读 ,  要自定义以及扩展起来比较麻烦 ， 而且产生 blog 的目录结构也复杂不够直观 。
+ 如果有一个同样支持 markdown 同时可以提供相同功能 ， 而更易用的 Python 版本 octopress 那多好啊 。
+ 于是一小心发现到基于 Python 的 <a href="http://blog.getpelican.com/">pelican</a> 这个项目就马上感觉就是这个了 ， 于是就有了本次的迁移 。</p>
 
-<h1>pelican的特性</h1>
-<p>说说我认为pelican的优点：</p>
+
+<h1>pelican 的特性 </h1>
+<p> 说说我认为 pelican 的优点 ：</p>
 <ol>
-<li>由Python实现，配置文件简单清晰，主题基于Jinja，扩展方便</li>
-<li>官方提供<a href="https://github.com/getpelican/pelican-plugins">pelican-plugins</a>及<a href="https://github.com/getpelican/pelican-themes">pelican-themes</a>，提供大量已有的插件和主题,&nbsp;懒人必备</li>
-<li>目录结构清晰，没有复杂的层次结构</li>
-<li>默认使用make来自动化提交，更通用，相比rake,&nbsp;更易于自定义和改进</li>
+<li> 由 Python 实现 ， 配置文件简单清晰 ， 主题基于 Jinja， 扩展方便 </li>
+<li> 官方提供 <a href="https://github.com/getpelican/pelican-plugins">pelican-plugins</a> 及 <a href="https://github.com/getpelican/pelican-themes">pelican-themes</a>， 提供大量已有的插件和主题 ,&nbsp; 懒人必备 </li>
+<li> 目录结构清晰 ， 没有复杂的层次结构 </li>
+<li> 默认使用 make 来自动化提交 ， 更通用 ， 相比 rake,&nbsp; 更易于自定义和改进 </li>
 </ol>
-<p>然而相比于octopress的缺点也不是没有，首先是默认主题就没有octopress功能完整和好用，同时默认安装如果要布置到github pages上还需要自己手动配置。接下来我会说说<a href="http://docs.getpelican.com/en/3.5.0/settings.html">官方文档</a>中没有提到的上述的配置。 </p>
-<h1>pelican的安装</h1>
-<p>在官方文档的<a href="http://docs.getpelican.com/en/3.5.0/quickstart.html">安装指南</a>有的东西，我这里就不再重重复。</p>
-<p>总的来说安装其实很简单，直接使用<code>pip install pelican</code>即可。</p>
-<p>然后使用<code>pelican-quickstart</code>命令在当前目录下建立一个初始的目录结构，如下</p>
+<p> 然而相比于 octopress 的缺点也不是没有 ， 首先是默认主题就没有 octopress 功能完整和好用 ， 同时默认安装如果要布置到 github pages 上还需要自己手动配置 。 接下来我会说说 <a href="http://docs.getpelican.com/en/3.5.0/settings.html"> 官方文档 </a> 中没有提到的上述的配置 。 </p>
+<h1>pelican 的安装 </h1>
+<p> 在官方文档的 <a href="http://docs.getpelican.com/en/3.5.0/quickstart.html"> 安装指南 </a> 有的东西 ， 我这里就不再重重复 。</p>
+<p> 总的来说安装其实很简单 ， 直接使用 <code>pip install pelican</code> 即可 。</p>
+<p> 然后使用 <code>pelican-quickstart</code> 命令在当前目录下建立一个初始的目录结构 ， 如下 </p>
 <div class="highlight"><pre>├── content
 ├── develop_server.sh
 ├── fabfile.py
@@ -51,10 +51,10 @@
 </pre></div>
 
 
-<p>其中<code>pelicanconf.py</code>是本地测试使用的配置, 而<code>publishconf.py</code>则是使用<code>make publish</code>对外发布时使用的配置。
-<code>content</code>用于存放markdown和相关静态文件的源目录，所生成的静态网站将会输出到<code>output</code>目录中。</p>
-<h1>pelican的配置运行</h1>
-<p>我们可以直接在<code>content</code>目录下，建立一个<code>test.md</code>文件作为实验，输入如下内容:</p>
+<p> 其中 <code>pelicanconf.py</code> 是本地测试使用的配置 ,  而 <code>publishconf.py</code> 则是使用 <code>make publish</code> 对外发布时使用的配置 。
+<code>content</code> 用于存放 markdown 和相关静态文件的源目录 ， 所生成的静态网站将会输出到 <code>output</code> 目录中 。</p>
+<h1>pelican 的配置运行 </h1>
+<p> 我们可以直接在 <code>content</code> 目录下 ， 建立一个 <code>test.md</code> 文件作为实验 ， 输入如下内容 :</p>
 <div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">First</span> <span class="n">Article</span>
 <span class="n">Date</span><span class="o">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">31</span> <span class="mi">10</span><span class="o">:</span><span class="mi">20</span>
 <span class="n">Category</span><span class="o">:</span> <span class="n">Test</span>
@@ -64,8 +64,8 @@
 </pre></div>
 
 
-<p>现在就可以使用命令<code>make devserver</code>来启动一个本地默认可以访问的http://localhost:8000测试http服务器, 并通过默认测试配置<code>pelicanconf.py</code>来生成的blog的静态网页。</p>
-<p>Ok，到此为此，pelican就正式配置运行起来啦，下次将会说一下具体<code>pelicanconf.py</code>和<code>publishconf.py</code>的配置，特有功能，插件以及主题的使用。</p>
+<p> 现在就可以使用命令 <code>make devserver</code> 来启动一个本地默认可以访问的 http://localhost:8000 测试 http 服务器 ,  并通过默认测试配置 <code>pelicanconf.py</code> 来生成的 blog 的静态网页 。</p>
+<p>Ok， 到此为此 ，pelican 就正式配置运行起来啦 ， 下次将会说一下具体 <code>pelicanconf.py</code> 和 <code>publishconf.py</code> 的配置 ， 特有功能 ， 插件以及主题的使用 。</p>
 	</div>
 	
 	       
