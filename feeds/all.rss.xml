@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>A Ordinary Boy, A Marvelous Toy</title><link href="http://blog.cosmoslx.me/" rel="alternate"></link><link href="http://blog.cosmoslx.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.cosmoslx.me/</id><updated>2015-01-03T21:08:58+08:00</updated><entry><title>把你的blog从octopress迁移到pelican吧(1)</title><link href="http://blog.cosmoslx.me/pelican-blog.html" rel="alternate"></link><updated>2015-01-03T21:08:58+08:00</updated><author><name>cosmoslx</name></author><id>tag:blog.cosmoslx.me,2015-01-03:pelican-blog.html</id><summary type="html">&lt;p&gt;在很久很久之前有一个用&lt;a href="http://octopress.org"&gt;octopress&lt;/a&gt;在github pages上搭建的blog, octopress提供使用markdown的方式来写blog，非常的方便，而且默认提供的功能和模板也足够的强大。
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Ordinary Boy, A Marvelous Toy</title><link>http://blog.cosmoslx.me/</link><description>Story about a ordinary boy who want to build a marvelous toy</description><atom:link href="http://blog.cosmoslx.me/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 03 Jan 2015 21:08:58 +0800</lastBuildDate><item><title>把你的blog从octopress迁移到pelican吧(1)</title><link>http://blog.cosmoslx.me/pelican-blog.html</link><description>&lt;p&gt;在很久很久之前有一个用&lt;a href="http://octopress.org"&gt;octopress&lt;/a&gt;在github pages上搭建的blog, octopress提供使用markdown的方式来写blog，非常的方便，而且默认提供的功能和模板也足够的强大。
 然而唯一的缺陷是是使用Ruby及Rake来配置和部署，简单看了一下，感觉比较不易读, 要自定义以及扩展起来比较麻烦，而且产生blog的目录结构也复杂不够直观。
 如果有一个同样支持markdown同时可以提供相同功能，而更易用的Python版本octopress那多好啊。
 于是一小心发现到基于Python的&lt;a href="http://blog.getpelican.com/"&gt;pelican&lt;/a&gt;这个项目就马上感觉就是这个了，于是就有了本次的迁移。&lt;/p&gt;
@@ -42,7 +42,7 @@
 
 
 &lt;p&gt;现在就可以使用命令&lt;code&gt;make devserver&lt;/code&gt;来启动一个本地默认可以访问的http://localhost:8000测试http服务器, 并通过默认测试配置&lt;code&gt;pelicanconf.py&lt;/code&gt;来生成的blog的静态网页。&lt;/p&gt;
-&lt;p&gt;Ok，到此为此，pelican就正式配置运行起来啦，下次将会说一下具体&lt;code&gt;pelicanconf.py&lt;/code&gt;和&lt;code&gt;publishconf.py&lt;/code&gt;的配置，特有功能，插件以及主题的使用。&lt;/p&gt;</summary></entry><entry><title>小v的sleep掉电bug根本原因分析和解决</title><link href="http://blog.cosmoslx.me/veer-sleep-bug.html" rel="alternate"></link><updated>2012-02-04T15:23:00+08:00</updated><author><name>cosmoslx</name></author><id>tag:blog.cosmoslx.me,2012-02-04:veer-sleep-bug.html</id><summary type="html">&lt;p&gt;hi~各位机油,龙年快乐啊,从2011年的圣诞的那天开始我拥抱veer,走上webos之路,各位煮机网的机油都给我提供了大量的帮助,现在是我小小贡献的时候了.废话不多说,进入正题.&lt;/p&gt;
+&lt;p&gt;Ok，到此为此，pelican就正式配置运行起来啦，下次将会说一下具体&lt;code&gt;pelicanconf.py&lt;/code&gt;和&lt;code&gt;publishconf.py&lt;/code&gt;的配置，特有功能，插件以及主题的使用。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">cosmoslx</dc:creator><pubDate>Sat, 03 Jan 2015 21:08:58 +0800</pubDate><guid>tag:blog.cosmoslx.me,2015-01-03:pelican-blog.html</guid></item><item><title>小v的sleep掉电bug根本原因分析和解决</title><link>http://blog.cosmoslx.me/veer-sleep-bug.html</link><description>&lt;p&gt;hi~各位机油,龙年快乐啊,从2011年的圣诞的那天开始我拥抱veer,走上webos之路,各位煮机网的机油都给我提供了大量的帮助,现在是我小小贡献的时候了.废话不多说,进入正题.&lt;/p&gt;
 &lt;!-- more --&gt;
 
 &lt;h1&gt;sleep掉电bug&lt;/h1&gt;
@@ -105,7 +105,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="http://bbs.zoopda.com/forum.php?mod=viewthread&amp;amp;tid=85588&amp;amp;fromuid=230125"&gt;待机突然掉电的真正原因，11月21日针对veer更新！&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://bbs.zoopda.com/forum.php?mod=viewthread&amp;amp;tid=94264&amp;amp;fromuid=230125"&gt;为甚么我的&lt;span class="caps"&gt;VEER&lt;/span&gt;装上动感地带的卡后老是出现“&lt;span class="caps"&gt;SIM&lt;/span&gt;卡服务”的字样&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary></entry><entry><title>2012: a turn</title><link href="http://blog.cosmoslx.me/2012-a-turn.html" rel="alternate"></link><updated>2012-01-21T23:27:00+08:00</updated><author><name>cosmoslx</name></author><id>tag:blog.cosmoslx.me,2012-01-21:2012-a-turn.html</id><summary type="html">&lt;h2&gt;缘起&lt;/h2&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">cosmoslx</dc:creator><pubDate>Sat, 04 Feb 2012 15:23:00 +0800</pubDate><guid>tag:blog.cosmoslx.me,2012-02-04:veer-sleep-bug.html</guid></item><item><title>2012: a turn</title><link>http://blog.cosmoslx.me/2012-a-turn.html</link><description>&lt;h2&gt;缘起&lt;/h2&gt;
 &lt;p&gt;很久了我一直都觉得缺少自己的一个blog，可以长期坚持记录一下自己的成长点滴供自己回顾及朋友们分享。
 其实在很久以前我确实有过一个小blog，大概在&lt;a href="http://www.blogcn.com"&gt;blogcn&lt;/a&gt;建立的(太久了以至我现在已经找不回来了)，有很大部分的当时收集的转载的内容和一小部分的学习经验。&amp;nbsp;然而由于各种的原因而遭到我的荒废慢慢的变得完全没有使用了，从此以后就过着没有blogging的幸福生活。&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -144,4 +144,4 @@
 &lt;/ul&gt;
 &lt;p&gt;有点贪心，可我的时间已经伤不起了。
 I believe 2012 is a&amp;nbsp;turn.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="do best" src="{filename}images/do-best.jpg" /&gt;&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;&lt;img alt="do best" src="{filename}images/do-best.jpg" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">cosmoslx</dc:creator><pubDate>Sat, 21 Jan 2012 23:27:00 +0800</pubDate><guid>tag:blog.cosmoslx.me,2012-01-21:2012-a-turn.html</guid></item></channel></rss>
