@@ -39,6 +39,7 @@ body > div.wrapper {
 header.site { padding: 50px 0 100px 0; }
 header.site > h1 { font-size: 3.5em; }
 header.site > h1:nth-child(2) { position: relative; z-index: -1; top: -5px; text-align: right; }
+header a { color: white; }
 
 /******* NAV ********/
 nav { width: 200px; text-align: right; }
