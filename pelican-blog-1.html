@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="http://blog.cosmoslx.me/theme/css/base.css" />
         <meta name="author" value="cosmoslx" />
         <meta name="description" value="在很久很久之前有一个用 octopress 在 github pages 上搭建的 blog, octopress 提供使用 markdown 的方式来写 blog， 非常的方便 ， 而且默认提供的功能和模板也足够的强大 。 然而唯一的缺陷是是使用 Ruby 及 Rake 来配置和部署 ， 简单看了一下 ， 感觉比较不易读 , 要自定义以及扩展起来比较麻烦 ， 而且产生 blog 的目录结构也复杂不够直观 。 如果有一个同样支持 markdown 同时可以提供相同功能 ， 而更易用的 Python 版本 octopress 那多好啊 。 于是一小心发现到基于 Python 的 pelican 这个项目就马上感觉就是这个了 ， 于是就有了本次的迁移 。" />
-        <meta name="keywords" value="" />
+        <meta name="keywords" value="python,pelican,blog" />
     </head>
     <body>
         <header class="site highlight">
@@ -41,13 +41,13 @@
             <li></li>
             <li></li>
         </ul>
-        Sat 03 January 2015
+        Sun 04 January 2015
         <address>
 			<img width="20" height="20" src="http://gravatar.com/avatar/b41ce38811954c2eb6009af0c131f4aa"></img>
             <a href="http://blog.cosmoslx.me/author/cosmoslx.html">cosmoslx</a>
         </address>
 
-    </footer>
+<ul class="tags"><lh>tags:</lh><li><a href="http://blog.cosmoslx.me/tag/python.html">python</a></li><li><a href="http://blog.cosmoslx.me/tag/pelican.html">pelican</a></li><li><a href="http://blog.cosmoslx.me/tag/blog.html">blog</a></li></ul>    </footer>
 
     <div class="content">
         <p> 在很久很久之前有一个用 <a href="http://octopress.org">octopress</a> 在 github pages 上搭建的 blog, octopress 提供使用 markdown 的方式来写 blog， 非常的方便 ， 而且默认提供的功能和模板也足够的强大 。
@@ -94,13 +94,24 @@
 
 <p> 现在就可以使用命令 <code>make devserver</code> 来启动一个本地默认可以访问的 http://localhost:8000 测试 http 服务器 ,  并通过默认测试配置 <code>pelicanconf.py</code> 来生成的 blog 的静态网页 。</p>
 <p>Ok， 到此为此 ，pelican 就正式配置运行起来啦 ， 下次将会说一下具体 <code>pelicanconf.py</code> 和 <code>publishconf.py</code> 的配置 ， 特有功能 ， 插件以及主题的使用 。</p>
+		<br /><hr />
+		<!-- <p>This post is part 1 of the "把你的blog从octopress迁移到pelican吧" series:</p> -->
+		<p>本篇是《把你的blog从octopress迁移到pelican吧》系列中的第1篇：</p>
+		<ol class="parts">
+			<li class="active">
+				<a href='http://blog.cosmoslx.me/pelican-blog-1.html'>把你的blog从octopress迁移到pelican吧(1)</a>
+			</li>
+			<li >
+				<a href='http://blog.cosmoslx.me/pelican-blog-2.html'>把你的blog从octopress迁移到pelican吧(2)</a>
+			</li>
+		</ol>
     </div><!-- /.entry-content -->
 
     <div class="comments">
         <h2>Comments</h2>
         <div id="disqus_thread"></div>
             <script type="text/javascript">
-                var disqus_identifier = "pelican-blog.html";
+                var disqus_identifier = "pelican-blog-1.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://cosmoslx-blog.disqus.com/embed.js';

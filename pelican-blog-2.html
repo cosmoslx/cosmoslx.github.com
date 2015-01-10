@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <title>A Ordinary Boy, A Marvelous Toy | 把你的blog从octopress迁移到pelican吧(2)</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <link rel="stylesheet" type="text/css" href="http://blog.cosmoslx.me/theme/css/base.css" />
+        <meta name="author" value="cosmoslx" />
+        <meta name="description" value="上篇 blog 说明了 pelican 的安装以及最简单的配置和测试使用 ， 然而只是开始的第一步 ， 在正式开始将 octopress 迁移过来前 ， 我们还需要搞定几件事 ： 配置 github pages 的自动部署的配置 配置可以使用 <!— more > 标签来设置文章摘要 配置生成 rss 或 atom 配置 disqus 评论功能支持 配置 google analytics 及 baidu 站长平台" />
+        <meta name="keywords" value="python,pelican,blog,google,baidu" />
+    </head>
+    <body>
+        <header class="site highlight">
+				<h1 class="stamp lrot bs"><a href="http://blog.cosmoslx.me">A ordinary boy</a></h1>
+					<h1 class="stamp rrot rfloat"><a href="http://github.com/cosmoslx/blog">build a marvelous toy</a></h1>
+        </header>
+        <div class="site clearfix">
+<nav class="lfloat">
+    <ul class="links">
+    <li>
+        <a class="stamp" href="http://blog.cosmoslx.me/category/life.html">Life</a>
+    </li>
+    <li>
+        <a class="stamp" href="http://blog.cosmoslx.me/category/play.html">Play</a>
+    </li>
+    <li class="active">
+        <a  href="http://blog.cosmoslx.me/category/tech.html">Tech</a>
+    </li>
+    </ul>
+    <ul class="social rfloat">
+        <li><a title="about me" href="http://about.me/cosmoslx"></a></li>
+        <li><a title="github" href="http://github.com/cosmoslx"></a></li>
+        <li><a href="http://blog.cosmoslx.me/feeds/atom.xml" class="feed" type="atom+xml"></a></li>
+    </ul>
+</nav>            <section class="content">
+                <h1 class="stamp">把你的blog从octopress迁移到pelican吧(2)</h1>
+                <div class="body">
+<article>
+    <footer>
+        <ul class="socialbtn">
+            <li></li>
+            <li></li>
+        </ul>
+        Sat 10 January 2015
+        <address>
+			<img width="20" height="20" src="http://gravatar.com/avatar/b41ce38811954c2eb6009af0c131f4aa"></img>
+            <a href="http://blog.cosmoslx.me/author/cosmoslx.html">cosmoslx</a>
+        </address>
+
+<ul class="tags"><lh>tags:</lh><li><a href="http://blog.cosmoslx.me/tag/python.html">python</a></li><li><a href="http://blog.cosmoslx.me/tag/pelican.html">pelican</a></li><li><a href="http://blog.cosmoslx.me/tag/blog.html">blog</a></li><li><a href="http://blog.cosmoslx.me/tag/google.html">google</a></li><li><a href="http://blog.cosmoslx.me/tag/baidu.html">baidu</a></li></ul>    </footer>
+
+    <div class="content">
+        <p><a href="http://blog.cosmoslx.me/pelican-blog-1.html"> 上篇 blog</a> 说明了 pelican 的安装以及最简单的配置和测试使用 ， 然而只是开始的第一步 ， 在正式开始将 octopress 迁移过来前 ， 我们还需要搞定几件事 ：</p>
+<ul>
+<li> 配置 github&nbsp;pages 的自动部署的配置 </li>
+<li> 配置可以使用 &lt;!&#8212; more&nbsp;&gt; 标签来设置文章摘要 </li>
+<li> 配置生成 rss 或 atom</li>
+<li> 配置 disqus 评论功能支持 </li>
+<li> 配置 google&nbsp;analytics 及 baidu 站长平台 </li>
+</ul>
+
+
+<h1> 配置自动部署到 github&nbsp;pages</h1>
+<p> 不像 octopress 般做到的全自动化 , pelican 对 github pages 的自动部署还是需要手动配置的 。
+ 而 pelican 的 <a href="http://docs.getpelican.com/en/3.5.0/publish.html"> 官方文档 </a> 对如何部署到 github pages 确没有太多的说明 。&nbsp; 这节我们就来搞定它 。</p>
+<p>pelican 其实在 <code>makefile</code> 中已经设置了一个 <code>github</code> 的 target， 只要使用 <code>make github</code> 就可以推送到设置的 github&nbsp;pages 中 。</p>
+<div class="highlight"><pre><span class="nf">github</span><span class="o">:</span> <span class="n">publish</span>
+    ghp-import -m <span class="s2">&quot;Generate Pelican site&quot;</span> -b <span class="k">$(</span>GITHUB_PAGES_BRANCH<span class="k">)</span> <span class="k">$(</span>OUTPUTDIR<span class="k">)</span>
+    git push origin <span class="k">$(</span>GITHUB_PAGES_BRANCH<span class="k">)</span>
+</pre></div>
+
+
+<p> 然而如果你直接运行 ， 则会发现会 <code>make</code> 命令运行失败 。pelican 并没有全自动化的搞定所有配置 ， 因此我们需要手动进行配置 。</p>
+<p> 首先 ， 因为 pelican 使用 <code>ghp-import</code> 工具来协助将内容推送到对应的 github pages 的 master 代码库中 ( 具体的原理 ， 参考 <code>ghp-import</code> 的介绍 <a href="https://github.com/davisp/ghp-import"> 页面 </a>)， 所以需要安装它 </p>
+<div class="highlight"><pre>pip install ghp-import
+</pre></div>
+
+
+<p> 然后 ， 需要配置你保存 blog 原始 markdown 信息的代码库 ,  我这里在 github 中创建的代码库为 <code>github.com/cosmoslx/blog.git</code>， 使用如下命令添加到代码库 ：</p>
+<div class="highlight"><pre><span class="c">#  设置对应代码库 </span>
+git remote <span class="nb">set</span>-url <span class="nb">source </span>git@github.com:cosmoslx/blog.git
+
+<span class="c">#  设置对应代码库为 source,  并向它推送 </span>
+git push -u <span class="nb">source </span>master
+</pre></div>
+
+
+<p> 接着 ， 配置你想推送的 github pages 对应的代码库 ,  我的 github page 代码库为 <code>github.com/cosmoslx/cosmoslx.github.io.git</code>。</p>
+<div class="highlight"><pre><span class="c">#  添加以下内容到 .gitignore,  不需要代码管理自动生成的内容 </span>
+    <span class="c"># pelican </span>
+    *.pid
+    cache
+    output
+
+<span class="c">#  设置对应代码库 </span>
+git remote <span class="nb">set</span>-url origin git@github.com:cosmoslx/cosmoslx.github.io.git
+
+<span class="c">#  设置对应代码库为 source,  并向它推送 </span>
+git push -u origin master
+</pre></div>
+
+
+<p> 最后 ， 这就大功告成 ， 试着提交吧 ， 初次提交 github&nbsp;pages 官方说明是 30 分钟以后才完全同步 ：</p>
+<div class="highlight"><pre>make github
+</pre></div>
+
+
+<p> 半个小时一下就过去了 ， 今天就到这里 ， 下次我们接着搞定余下的配置 ， 然后就可以尽情地玩耍了 :-P</p>
+		<br /><hr />
+		<!-- <p>This post is part 2 of the "把你的blog从octopress迁移到pelican吧" series:</p> -->
+		<p>本篇是《把你的blog从octopress迁移到pelican吧》系列中的第2篇：</p>
+		<ol class="parts">
+			<li >
+				<a href='http://blog.cosmoslx.me/pelican-blog-1.html'>把你的blog从octopress迁移到pelican吧(1)</a>
+			</li>
+			<li class="active">
+				<a href='http://blog.cosmoslx.me/pelican-blog-2.html'>把你的blog从octopress迁移到pelican吧(2)</a>
+			</li>
+		</ol>
+    </div><!-- /.entry-content -->
+
+    <div class="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_identifier = "pelican-blog-2.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://cosmoslx-blog.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+    </div>
+
+</article>
+                </div>
+            </section>
+ <footer class="site clearfix bs">
+    <section class="lfloat">
+        <ul>
+            <lh>categories</lh>
+            <li><a href="http://blog.cosmoslx.me/category/life.html">Life</a></li>
+            <li><a href="http://blog.cosmoslx.me/category/play.html">Play</a></li>
+            <li><a href="http://blog.cosmoslx.me/category/tech.html">Tech</a></li>
+        </ul>
+    </section>
+    <section class="lfloat">
+        <ul>
+            <lh>pages</lh>
+        </ul>
+    </section>
+    <section class="rfloat">
+    <small>
+        <p>site generated by <a href="https://github.com/getpelican/pelican">pelican</a></p>
+        <p>theme by <a href="https://github.com/demianbrecht">demian brecht</a></p>
+    </small>
+    </section>
+</footer>        </div>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-58180786-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    </body>
+</html>

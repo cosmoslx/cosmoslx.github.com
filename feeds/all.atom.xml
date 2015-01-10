@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>A Ordinary Boy, A Marvelous Toy</title><link href="http://blog.cosmoslx.me/" rel="alternate"></link><link href="http://blog.cosmoslx.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.cosmoslx.me/</id><updated>2015-01-03T21:08:58+08:00</updated><entry><title>把你的blog从octopress迁移到pelican吧(1)</title><link href="http://blog.cosmoslx.me/pelican-blog.html" rel="alternate"></link><updated>2015-01-03T21:08:58+08:00</updated><author><name>cosmoslx</name></author><id>tag:blog.cosmoslx.me,2015-01-03:pelican-blog.html</id><summary type="html">&lt;p&gt; 在很久很久之前有一个用 &lt;a href="http://octopress.org"&gt;octopress&lt;/a&gt; 在 github pages 上搭建的 blog, octopress 提供使用 markdown 的方式来写 blog， 非常的方便 ， 而且默认提供的功能和模板也足够的强大 。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>A Ordinary Boy, A Marvelous Toy</title><link href="http://blog.cosmoslx.me/" rel="alternate"></link><link href="http://blog.cosmoslx.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.cosmoslx.me/</id><updated>2015-01-10T23:28:37+08:00</updated><entry><title>把你的blog从octopress迁移到pelican吧(2)</title><link href="http://blog.cosmoslx.me/pelican-blog-2.html" rel="alternate"></link><updated>2015-01-10T23:28:37+08:00</updated><author><name>cosmoslx</name></author><id>tag:blog.cosmoslx.me,2015-01-10:pelican-blog-2.html</id><summary type="html">&lt;p&gt;&lt;a href="http://blog.cosmoslx.me/pelican-blog-1.html"&gt; 上篇 blog&lt;/a&gt; 说明了 pelican 的安装以及最简单的配置和测试使用 ， 然而只是开始的第一步 ， 在正式开始将 octopress 迁移过来前 ， 我们还需要搞定几件事 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt; 配置 github&amp;nbsp;pages 的自动部署的配置 &lt;/li&gt;
+&lt;li&gt; 配置可以使用 &amp;lt;!&amp;#8212; more&amp;nbsp;&amp;gt; 标签来设置文章摘要 &lt;/li&gt;
+&lt;li&gt; 配置生成 rss 或 atom&lt;/li&gt;
+&lt;li&gt; 配置 disqus 评论功能支持 &lt;/li&gt;
+&lt;li&gt; 配置 google&amp;nbsp;analytics 及 baidu 站长平台 &lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h1&gt; 配置自动部署到 github&amp;nbsp;pages&lt;/h1&gt;
+&lt;p&gt; 不像 octopress 般做到的全自动化 , pelican 对 github pages 的自动部署还是需要手动配置的 。
+ 而 pelican 的 &lt;a href="http://docs.getpelican.com/en/3.5.0/publish.html"&gt; 官方文档 &lt;/a&gt; 对如何部署到 github pages 确没有太多的说明 。&amp;nbsp; 这节我们就来搞定它 。&lt;/p&gt;
+&lt;p&gt;pelican 其实在 &lt;code&gt;makefile&lt;/code&gt; 中已经设置了一个 &lt;code&gt;github&lt;/code&gt; 的 target， 只要使用 &lt;code&gt;make github&lt;/code&gt; 就可以推送到设置的 github&amp;nbsp;pages 中 。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;github&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt;
+    ghp-import -m &lt;span class="s2"&gt;&amp;quot;Generate Pelican site&amp;quot;&lt;/span&gt; -b &lt;span class="k"&gt;$(&lt;/span&gt;GITHUB_PAGES_BRANCH&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OUTPUTDIR&lt;span class="k"&gt;)&lt;/span&gt;
+    git push origin &lt;span class="k"&gt;$(&lt;/span&gt;GITHUB_PAGES_BRANCH&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt; 然而如果你直接运行 ， 则会发现会 &lt;code&gt;make&lt;/code&gt; 命令运行失败 。pelican 并没有全自动化的搞定所有配置 ， 因此我们需要手动进行配置 。&lt;/p&gt;
+&lt;p&gt; 首先 ， 因为 pelican 使用 &lt;code&gt;ghp-import&lt;/code&gt; 工具来协助将内容推送到对应的 github pages 的 master 代码库中 ( 具体的原理 ， 参考 &lt;code&gt;ghp-import&lt;/code&gt; 的介绍 &lt;a href="https://github.com/davisp/ghp-import"&gt; 页面 &lt;/a&gt;)， 所以需要安装它 &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install ghp-import
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt; 然后 ， 需要配置你保存 blog 原始 markdown 信息的代码库 ,  我这里在 github 中创建的代码库为 &lt;code&gt;github.com/cosmoslx/blog.git&lt;/code&gt;， 使用如下命令添加到代码库 ：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#  设置对应代码库 &lt;/span&gt;
+git remote &lt;span class="nb"&gt;set&lt;/span&gt;-url &lt;span class="nb"&gt;source &lt;/span&gt;git@github.com:cosmoslx/blog.git
+
+&lt;span class="c"&gt;#  设置对应代码库为 source,  并向它推送 &lt;/span&gt;
+git push -u &lt;span class="nb"&gt;source &lt;/span&gt;master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt; 接着 ， 配置你想推送的 github pages 对应的代码库 ,  我的 github page 代码库为 &lt;code&gt;github.com/cosmoslx/cosmoslx.github.io.git&lt;/code&gt;。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#  添加以下内容到 .gitignore,  不需要代码管理自动生成的内容 &lt;/span&gt;
+    &lt;span class="c"&gt;# pelican &lt;/span&gt;
+    *.pid
+    cache
+    output
+
+&lt;span class="c"&gt;#  设置对应代码库 &lt;/span&gt;
+git remote &lt;span class="nb"&gt;set&lt;/span&gt;-url origin git@github.com:cosmoslx/cosmoslx.github.io.git
+
+&lt;span class="c"&gt;#  设置对应代码库为 source,  并向它推送 &lt;/span&gt;
+git push -u origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt; 最后 ， 这就大功告成 ， 试着提交吧 ， 初次提交 github&amp;nbsp;pages 官方说明是 30 分钟以后才完全同步 ：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;make github
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt; 半个小时一下就过去了 ， 今天就到这里 ， 下次我们接着搞定余下的配置 ， 然后就可以尽情地玩耍了 :-P&lt;/p&gt;</summary><category term="python"></category><category term="pelican"></category><category term="blog"></category><category term="google"></category><category term="baidu"></category></entry><entry><title>把你的blog从octopress迁移到pelican吧(1)</title><link href="http://blog.cosmoslx.me/pelican-blog-1.html" rel="alternate"></link><updated>2015-01-04T21:30:00+08:00</updated><author><name>cosmoslx</name></author><id>tag:blog.cosmoslx.me,2015-01-04:pelican-blog-1.html</id><summary type="html">&lt;p&gt; 在很久很久之前有一个用 &lt;a href="http://octopress.org"&gt;octopress&lt;/a&gt; 在 github pages 上搭建的 blog, octopress 提供使用 markdown 的方式来写 blog， 非常的方便 ， 而且默认提供的功能和模板也足够的强大 。
  然而唯一的缺陷是是使用 Ruby 及 Rake 来配置和部署 ， 简单看了一下 ， 感觉比较不易读 ,  要自定义以及扩展起来比较麻烦 ， 而且产生 blog 的目录结构也复杂不够直观 。
  如果有一个同样支持 markdown 同时可以提供相同功能 ， 而更易用的 Python 版本 octopress 那多好啊 。
  于是一小心发现到基于 Python 的 &lt;a href="http://blog.getpelican.com/"&gt;pelican&lt;/a&gt; 这个项目就马上感觉就是这个了 ， 于是就有了本次的迁移 。&lt;/p&gt;
@@ -42,7 +97,7 @@
 
 
 &lt;p&gt; 现在就可以使用命令 &lt;code&gt;make devserver&lt;/code&gt; 来启动一个本地默认可以访问的 http://localhost:8000 测试 http 服务器 ,  并通过默认测试配置 &lt;code&gt;pelicanconf.py&lt;/code&gt; 来生成的 blog 的静态网页 。&lt;/p&gt;
-&lt;p&gt;Ok， 到此为此 ，pelican 就正式配置运行起来啦 ， 下次将会说一下具体 &lt;code&gt;pelicanconf.py&lt;/code&gt; 和 &lt;code&gt;publishconf.py&lt;/code&gt; 的配置 ， 特有功能 ， 插件以及主题的使用 。&lt;/p&gt;</summary></entry><entry><title>小v的sleep掉电bug根本原因分析和解决</title><link href="http://blog.cosmoslx.me/veer-sleep-bug.html" rel="alternate"></link><updated>2012-02-04T15:23:00+08:00</updated><author><name>cosmoslx</name></author><id>tag:blog.cosmoslx.me,2012-02-04:veer-sleep-bug.html</id><summary type="html">&lt;p&gt;hi~ 各位机油 , 龙年快乐啊 , 从 2011 年的圣诞的那天开始我拥抱 veer, 走上 webos 之路 , 各位煮机网的机油都给我提供了大量的帮助 , 现在是我小小贡献的时候了 . 废话不多说 , 进入正题 .&lt;/p&gt;
+&lt;p&gt;Ok， 到此为此 ，pelican 就正式配置运行起来啦 ， 下次将会说一下具体 &lt;code&gt;pelicanconf.py&lt;/code&gt; 和 &lt;code&gt;publishconf.py&lt;/code&gt; 的配置 ， 特有功能 ， 插件以及主题的使用 。&lt;/p&gt;</summary><category term="python"></category><category term="pelican"></category><category term="blog"></category></entry><entry><title>小v的sleep掉电bug根本原因分析和解决</title><link href="http://blog.cosmoslx.me/veer-sleep-bug.html" rel="alternate"></link><updated>2012-02-04T15:23:00+08:00</updated><author><name>cosmoslx</name></author><id>tag:blog.cosmoslx.me,2012-02-04:veer-sleep-bug.html</id><summary type="html">&lt;p&gt;hi~ 各位机油 , 龙年快乐啊 , 从 2011 年的圣诞的那天开始我拥抱 veer, 走上 webos 之路 , 各位煮机网的机油都给我提供了大量的帮助 , 现在是我小小贡献的时候了 . 废话不多说 , 进入正题 .&lt;/p&gt;
 
 
 &lt;h1&gt;sleep 掉电 bug&lt;/h1&gt;
