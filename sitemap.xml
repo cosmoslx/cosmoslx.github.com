@@ -4,119 +4,119 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://blog.cosmoslx.me/</loc>
+<loc>/</loc>
 <lastmod>2015-01-10T23:34:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/archives.html</loc>
+<loc>/archives.html</loc>
 <lastmod>2015-01-10T23:34:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/tags.html</loc>
+<loc>/tags.html</loc>
 <lastmod>2015-01-10T23:34:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/categories.html</loc>
+<loc>/categories.html</loc>
 <lastmod>2015-01-10T23:34:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/pelican-blog-2.html</loc>
+<loc>/pelican-blog-2.html</loc>
 <lastmod>2015-01-10T23:28:37+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/pelican-blog-1.html</loc>
+<loc>/pelican-blog-1.html</loc>
 <lastmod>2015-01-04T21:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/veer-sleep-bug.html</loc>
+<loc>/veer-sleep-bug.html</loc>
 <lastmod>2012-02-04T15:23:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/2012-a-turn.html</loc>
+<loc>/2012-a-turn.html</loc>
 <lastmod>2012-01-21T23:27:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/category/life.html</loc>
+<loc>/category/life.html</loc>
 <lastmod>2012-01-21T23:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/category/play.html</loc>
+<loc>/category/play.html</loc>
 <lastmod>2012-02-04T15:23:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/category/tech.html</loc>
+<loc>/category/tech.html</loc>
 <lastmod>2015-01-10T23:28:37+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/tag/python.html</loc>
+<loc>/tag/python.html</loc>
 <lastmod>2015-01-10T23:28:37+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/tag/pelican.html</loc>
+<loc>/tag/pelican.html</loc>
 <lastmod>2015-01-10T23:28:37+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/tag/google.html</loc>
+<loc>/tag/google.html</loc>
 <lastmod>2015-01-10T23:28:37+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/tag/baidu.html</loc>
+<loc>/tag/baidu.html</loc>
 <lastmod>2015-01-10T23:28:37+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/tag/blog.html</loc>
+<loc>/tag/blog.html</loc>
 <lastmod>2015-01-10T23:28:37+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.cosmoslx.me/author/cosmoslx.html</loc>
+<loc>/author/cosmoslx.html</loc>
 <lastmod>2015-01-10T23:28:37+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
